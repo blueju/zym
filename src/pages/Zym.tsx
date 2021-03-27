@@ -159,7 +159,7 @@ export default class Zym extends React.Component {
     return (
       <Row gutter={16}>
         <Col span={4} offset={6}>
-          <Card size="small" title="交易代码" style={{ height: 200 }}>
+          <Card size="small" title="交易代码" style={{ height: 250 }}>
             {this.state.tradeCode.map((item) => {
               return (
                 <section key={item.code}>
@@ -176,7 +176,7 @@ export default class Zym extends React.Component {
           </Card>
         </Col>
         <Col span={4}>
-          <Card size="small" title="交易要素" style={{ height: 200 }}>
+          <Card size="small" title="交易要素" style={{ height: 250 }}>
             {tradeCode
               .find((item) => item.code === currentTradeCode)
               ?.children.map((item) => {
@@ -197,12 +197,11 @@ export default class Zym extends React.Component {
           </Card>
         </Col>
         <Col span={4}>
-          <Card size="small" title="已选" style={{ height: 200 }}>
+          <Card size="small" title="已选" style={{ height: 250 }}>
             {selected.map((item, index) => {
               return (
                 <Tag
                   key={index}
-                  style={{}}
                   className={styles.selectedTag}
                   onClose={() => {
                     this.onRemoveSelected(item);
