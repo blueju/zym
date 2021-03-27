@@ -1,10 +1,11 @@
+import { withRouter } from 'umi';
 import React from 'react';
 import { cloneDeep } from 'lodash';
 import { Checkbox, Card, Row, Col, Tag } from 'antd';
 
 import styles from './index.less';
 
-export default class Zym extends React.Component {
+class Zym extends React.Component {
   state = {
     /**
      * 交易代码
@@ -155,11 +156,12 @@ export default class Zym extends React.Component {
   }
 
   render() {
+    const { mode = 'view' } = this.props.location.query;
     const { currentTradeCode, tradeCode, selected } = this.state;
     return (
       <Row gutter={16}>
         <Col span={4} offset={6}>
-          <Card size="small" title="交易代码" style={{ height: 250 }}>
+          <Card size='small' title='交易代码' style={{ height: 250 }}>
             {this.state.tradeCode.map((item) => {
               return (
                 <section key={item.code}>
@@ -176,7 +178,7 @@ export default class Zym extends React.Component {
           </Card>
         </Col>
         <Col span={4}>
-          <Card size="small" title="交易要素" style={{ height: 250 }}>
+          <Card size='small' title='交易要素' style={{ height: 250 }}>
             {tradeCode
               .find((item) => item.code === currentTradeCode)
               ?.children.map((item) => {
@@ -197,7 +199,7 @@ export default class Zym extends React.Component {
           </Card>
         </Col>
         <Col span={4}>
-          <Card size="small" title="已选" style={{ height: 250 }}>
+          <Card size='small' title='已选' style={{ height: 250 }}>
             {selected.map((item, index) => {
               return (
                 <Tag
@@ -218,3 +220,5 @@ export default class Zym extends React.Component {
     );
   }
 }
+
+export default withRouter(Zym);
